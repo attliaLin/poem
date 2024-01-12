@@ -64,7 +64,7 @@ mod locale;
 mod resources;
 
 pub use fluent_langneg::NegotiationStrategy;
-pub use unic_langid;
+pub use icu_locid;
 
 pub use self::{
     args::I18NArgs,

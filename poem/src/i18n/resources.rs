@@ -6,9 +6,10 @@ use std::{
 };
 
 use fluent::{FluentMessage, FluentResource};
+use fluent_langneg::LanguageIdentifier;
+use icu_locid::langid;
 use intl_memoizer::concurrent::IntlLangMemoizer;
 use smallvec::SmallVec;
-use unic_langid::{langid, LanguageIdentifier};
 
 use crate::{error::I18NError, Result};
 

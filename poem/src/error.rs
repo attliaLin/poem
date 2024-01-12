@@ -1087,7 +1087,7 @@ pub enum I18NError {
 
     /// Invalid language id.
     #[error("invalid language id: {0}")]
-    LanguageIdentifier(#[from] unic_langid::LanguageIdentifierError),
+    LanguageIdentifier(#[from] icu_locid::Error),
 
     /// Io error
     #[error("io: {0}")]

@@ -1,8 +1,8 @@
 use std::str::FromStr;
 
+use fluent_langneg::LanguageIdentifier;
 use http::header;
 use smallvec::SmallVec;
-use unic_langid::LanguageIdentifier;
 
 use crate::{
     error::I18NError,
