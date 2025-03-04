@@ -3,7 +3,7 @@ use std::{
     task::{Context, Poll},
 };
 
-use futures_util::{future::BoxFuture, FutureExt};
+use futures_util::{future::BoxFuture, Future, FutureExt};
 use http::StatusCode;
 use tower::{buffer::Buffer, BoxError, Layer, Service, ServiceExt};
 
@@ -49,7 +49,6 @@ where
     <L::Service as Service<Request>>::Error: Into<BoxError> + Send + Sync,
 {
     type Output = TowerServiceToEndpoint<L::Service>;
-
     fn transform(&self, ep: E) -> Self::Output {
         let new_svc = self.0.layer(EndpointToTowerService(Arc::new(ep)));
         let buffer = Buffer::new(new_svc, 32);
@@ -79,7 +78,7 @@ where
 }
 
 /// An tower service to endpoint adapter.
-pub struct TowerServiceToEndpoint<Svc: Service<Request>>(Buffer<Svc, Request>);
+pub struct TowerServiceToEndpoint<F: Service<Request>::Future>(Buffer<Request, F>);
 
 impl<Svc> Endpoint for TowerServiceToEndpoint<Svc>
 where

@@ -8,12 +8,12 @@ publish.workspace = true
 poem = { workspace = true, features = ["tower-compat"] }
 tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
 prost = "0.13.1"
-tonic = "0.12.1"
+tonic = "0.12.3"
 tracing-subscriber.workspace = true
-tower = { version = "0.4.8", features = ["buffer"] }
+tower = { version = "0.5.2", features = ["buffer"] }
 
 [build-dependencies]
-tonic-build = "0.12.1"
+tonic-build = "0.12.3"
 
 [[bin]]
 name = "example-tonic-client"
